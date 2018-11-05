@@ -1,0 +1,35 @@
+pragma solidity ^0.4.12;
+ 
+// ----------------------------------------------------------------------------
+// 'Simple Values Calculator' Experimental Contract
+//
+// simple contract to calculate , multiplication and adition
+// rules: 
+// 
+// (c) by Justinas Kairys/ ibnz Developers
+// ----------------------------------------------------------------------------
+
+
+contract presetValuesCalc {
+    
+    Calculator calc = new Calculator();
+    
+    function fourTimesTwo() constant returns (int) {
+        return calc.multiplycation(4, 2);
+    }
+    
+    function fivePlusTwo() constant returns(int) {
+        return calc.addition(5, 2);
+    }
+}
+
+contract Calculator {
+    
+    function addition(int a, int b) returns (int) {
+        return a + b;
+    }
+    
+    function multiplycation(int a, int b) returns (int) {
+        return a * b;
+    }
+}
