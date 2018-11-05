@@ -1,0 +1,40 @@
+pragma solidity ^0.4.12;
+ 
+// ----------------------------------------------------------------------------
+// 'SetWordGetWords' Experimental Contract
+//
+// simple contract to set and get words (phrases)
+// rules: only contract creator can set new words
+// 0x109740d6ccf51d31504be2293862f887a2c3a587
+//
+// (c) by Justinas Kairys/ ibnz Developers
+// ----------------------------------------------------------------------------
+
+
+
+contract SetWordGetWords {
+    string words = 'Hy My Name Is Justinas';
+    address owner;
+    
+    function TriggerContract() {
+        owner = msg.sender;
+    }
+    
+    modifier onlyOwner {
+        if(owner != msg.sender) {
+            throw;
+        } else {
+            _;
+        }
+    }
+    
+    function getWords() constant returns(string) {
+        return words;
+    }
+    
+    function setWords(string newWords) onlyOwner returns(string) {
+        words = newWords;
+        return 'words have been changed';
+    }
+    
+}
